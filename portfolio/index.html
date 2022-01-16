@@ -4,13 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/img/favicon portfolio.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="./assets/img/favicon portfolio.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@700&display=swap"
+      rel="stylesheet"/>
     <link rel="stylesheet" href="./style.css" />
     <title>Portfolio</title>
   </head>
@@ -18,7 +16,6 @@
     <header class="header">
       <div class="container container-header">
         <div class="header-logo">logo svg</div>
-
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-list-item">Skills</li>
@@ -28,14 +25,13 @@
             <li class="nav-list-item">Contacts</li>
           </ul>
         </nav>
-
         <div class="switch-lng">en &nbsp;/ ru</div>
       </div>
     </header>
     <main class="main">
       <div class="container container-fullscreen">
         <section class="section section-hero" id="hero">
-          <div class="hero-content">
+          <div class="hero-container">
             <h1 class="hero-title">Alexa Rise</h1>
             <p class="hero-text">
               Save sincere emotions, romantic feelings and happy moments of life
@@ -182,15 +178,49 @@
       </div>
 
       <div class="container container-fullscreen">
-        <section class="section" id="contacts">
-          <h2 class="section-title contacts-title">
-            <span class="section-title-text">Contact me</span>
-          </h2>
+        <section class="section section-contacts" id="contacts">
+          <div class="contacts-container">
+            <h2 class="section-title contacts-title">
+              <span class="section-title-text contacts-title-text"
+                >Contact me</span
+              >
+            </h2>
+            <input
+              class="contacts-email contacts-item"
+              type="email"
+              placeholder="E-mail"
+            />
+            <input
+              class="contacts-tel contacts-item"
+              type="tel"
+              placeholder="Phone"
+            />
+            <textarea
+              class="contacts-message contacts-item"
+              placeholder="Message"
+            ></textarea>
+            <button class="btn">Send message</button>
+          </div>
         </section>
       </div>
     </main>
     <footer class="footer">
-      <div class="container">Footer</div>
+      <div class="container container-footer">
+        <div class="footer-data container-footer-item">
+          <span class="footer-data-item">©</span>
+          <span class="footer-data-item">2022</span>
+          <span class="footer-data-item">github</span>
+        </div>
+        <div class="footer-rss container-footer-item">
+          <span class="footer-rss-text">Rolling Scopes School</span>
+        </div>
+        <div class="footer-social container-footer-item">
+          <div class="footer-social-item">lo</div>
+          <div class="footer-social-item">lo</div>
+          <div class="footer-social-item">lo</div>
+          <div class="footer-social-item">lo</div>
+        </div>
+      </div>
     </footer>
     <script src="./index.js"></script>
   </body>
