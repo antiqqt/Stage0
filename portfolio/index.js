@@ -1,30 +1,29 @@
-console.log(`вёрстка валидная +10 
-<header>, <main>, <footer> +2'
-шесть элементов <section> +2
-только один заголовок <h1> +2
-пять заголовков <h2> +2
-один элемент <nav> +2
-два списка ul > li > a +2
-десять кнопок <button> +2
-два инпута: <input type="email"> и <input type="tel"> +2
-один элемент <textarea> +2
-три атрибута placeholder +2
-блок <header> +6
-секция hero +6
-секция skills +6
-секция portfolio +6
-секция video +6
-секция price +6
-секция contacts +6
-блок <footer> +6
-для построения сетки используются флексы или гриды +2
-при уменьшении масштаба страницы браузера вёрстка размещается по центру +2
-фоновый цвет тянется на всю ширину страницы +2
-иконки добавлены в формате .svg. +2
-изображения добавлены в формате .jpg +2
-есть favicon +2
-плавная прокрутка по якорям +5
-ссылки в футере ведут на гитхаб автора проекта и на страницу курса +5
-интерактивность +5
-плавное изменение внешнего вида элемента при наведении +5
-Total score: 110/110`)
+const menuBtn = document.querySelector('.menu-btn');
+const nav = document.querySelector('.nav');
+let menuOpen = false;
+
+menuBtn.addEventListener('click', () => {
+  if (!menuOpen) {
+    menuBtn.classList.add('open');
+    nav.classList.add('open');
+    menuOpen = true;
+  } else {
+    menuBtn.classList.remove('open');
+    nav.classList.remove('open');
+    menuOpen = false;
+  }
+});
+
+const navLink = document.querySelector('.nav-link');
+navLink.addEventListener('click', () => {
+  menuBtn.classList.remove('open');
+  nav.classList.remove('open');
+  menuOpen = false;
+});
+
+
+console.log(`Вёрстка соответствует макету. Ширина экрана 768px +48
+Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки. 
+Весь контент страницы при этом сохраняется: не обрезается и не удаляется +15
+На ширине экрана 768рх и меньше реализовано адаптивное меню +22
+85/75`);
