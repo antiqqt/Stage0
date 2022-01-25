@@ -826,7 +826,7 @@ input:-webkit-autofill:active {
   }
 
   .price-item {
-    width: 90%;
+    width: 65%;
   }
 
   .price-item-text {
@@ -964,6 +964,7 @@ input:-webkit-autofill:active {
 
   .price-btn {
     width: 65%;
+    height: 20%;
   }
 
   .contacts-container {
