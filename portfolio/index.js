@@ -14,12 +14,14 @@ menuBtn.addEventListener('click', () => {
   }
 });
 
-const navLink = document.querySelector('.nav-link');
-navLink.addEventListener('click', () => {
-  menuBtn.classList.remove('open');
-  nav.classList.remove('open');
-  menuOpen = false;
-});
+const navLink = document.querySelectorAll('.nav-link');
+navLink.forEach(elem => {
+  elem.addEventListener('click', () => {
+    menuBtn.classList.remove('open');
+    nav.classList.remove('open');
+    menuOpen = false;
+  });
+})
 
 
 console.log(`Вёрстка соответствует макету. Ширина экрана 768px +48
