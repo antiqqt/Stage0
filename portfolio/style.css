@@ -97,6 +97,7 @@ body {
   text-align: center;
   font-size: 20px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .check-en {
@@ -226,10 +227,19 @@ body {
   margin: 0 auto 60px;
 }
 
+.portfolio-btn.active {
+  color: #000;
+  background-color: #bdae82;
+}
+
 .portfolio-items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+}
+
+#video {
+  padding-top: 10.3%;
 }
 
 .video-player {
@@ -252,6 +262,12 @@ body {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+#price {
+  padding-top: 10.3%;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .price-items {
@@ -425,11 +441,6 @@ footer-rss-text {
 
 .btn-dark:hover {
   color: var(--clr-secondary);
-}
-
-.btn-dark:active {
-  color: var(--clr-primary);
-  background-color: var(--clr-contrast);
 }
 
 input:-webkit-autofill,
@@ -633,7 +644,7 @@ input:-webkit-autofill:active {
     line-height: 72px;
   }
 
-  .nav-list-item::hover{
+  .nav-list-item::hover {
     color: var(--clr-contrast);
   }
 
@@ -663,7 +674,7 @@ input:-webkit-autofill:active {
 
   .menu-btn-burger::before,
   .menu-btn-burger::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 50px;
     height: 3px;
@@ -697,7 +708,7 @@ input:-webkit-autofill:active {
 
   .container-padding > .section {
     padding-top: 80px;
-    max-width: 644px;
+    max-width: 758px;
   }
 
   .section-title {
@@ -799,12 +810,10 @@ input:-webkit-autofill:active {
   }
 
   .video-player {
-    width: 100%;
     max-height: 418px;
     min-height: 0;
     background-image: url('./assets/img/video-player.jpg');
     background-repeat: no-repeat;
-    background-position: -100px 0;
   }
 
   .video-player-btn {
@@ -826,7 +835,7 @@ input:-webkit-autofill:active {
   }
 
   .price-item {
-    width: 65%;
+    width: 58%;
   }
 
   .price-item-text {
@@ -970,9 +979,7 @@ input:-webkit-autofill:active {
   .contacts-container {
     width: 70%;
   }
-
 }
 
 @media (max-width: 368px) {
-
 }
