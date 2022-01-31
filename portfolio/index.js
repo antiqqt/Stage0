@@ -1,3 +1,26 @@
+// Fetch data from local storage
+let lang = 'en';
+let theme = 'dark';
+
+function getLocalStorage() {
+  if (localStorage.getItem('lang') === 'ru') {
+    const langStored = localStorage.getItem('lang');
+
+    switchBtns.forEach((btn) => btn.classList.remove('active'));
+    document.querySelector('.check-ru').classList.add('active');
+
+    getTranslate(langStored);
+  }
+
+  if (localStorage.getItem('theme') === 'light') {
+    console.log(localStorage.getItem('theme'));
+    themeChangeElements.forEach((elem) => {
+      elem.classList.toggle('light-theme');
+    });
+  }
+}
+window.addEventListener('load', getLocalStorage);
+
 // Adaptive hamburger menu
 const menuBtn = document.querySelector('.menu-btn');
 const nav = document.querySelector('.nav');
@@ -65,17 +88,25 @@ function preloadSummerImages() {
 import i18Obj from './assets/translation/translate.js';
 const switchLng = document.querySelectorAll('.switch-lng-check');
 const switchBtns = document.querySelectorAll('.switch-lng-check');
+const textElements = document.querySelectorAll('[data-i18]');
 
-switchLng.forEach((elem) => {
-  elem.addEventListener('click', (event) => {
-    // Clean all btns and make current active
-    switchBtns.forEach((btn) => btn.classList.remove('active'));
-    event.target.classList.add('active');
+changeLng();
 
-    // Translate the page
-    getTranslate(event.target.textContent);
+function changeLng() {
+  switchLng.forEach((elem) => {
+    elem.addEventListener('click', (event) => {
+      // Clean all btns and make current active
+      switchBtns.forEach((btn) => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Set user lang preference
+      lang === 'en' ? (lang = 'ru') : (lang = 'en');
+
+      // Translate the page
+      getTranslate(event.target.textContent);
+    });
   });
-});
+}
 
 function getTranslate(lang) {
   const textElements = document.querySelectorAll('[data-i18]');
@@ -96,11 +127,26 @@ function getTranslate(lang) {
 const themeChangeElements = document.querySelectorAll('.theme-change');
 const themeSwitchBtn = document.querySelector('.switch-theme');
 
-themeSwitchBtn.addEventListener('click', () => {
-  themeChangeElements.forEach((elem) => {
-    elem.classList.toggle('light-theme');
+changeTheme();
+
+function changeTheme() {
+  themeSwitchBtn.addEventListener('click', () => {
+    // Set user theme preference
+    theme === 'dark' ? (theme = 'light') : (theme = 'dark');
+
+    // Change theme
+    themeChangeElements.forEach((elem) => {
+      elem.classList.toggle('light-theme');
+    });
   });
-});
+}
+
+// Create local storage
+function setLocalStorage() {
+  localStorage.setItem('lang', lang);
+  localStorage.setItem('theme', theme);
+}
+window.addEventListener('beforeunload', setLocalStorage);
 
 console.log(`Вёрстка соответствует макету. Ширина экрана 768px +48
 Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки. 
