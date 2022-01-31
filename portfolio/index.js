@@ -95,20 +95,11 @@ function getTranslate(lang) {
 // Dark-light theme change
 const themeChangeElements = document.querySelectorAll('.theme-change');
 const themeSwitchBtn = document.querySelector('.switch-theme');
-let lightThemeActive = false;
 
 themeSwitchBtn.addEventListener('click', () => {
-  if (lightThemeActive) {
-    themeChangeElements.forEach((elem) => {
-      elem.classList.remove('light-theme');
-    });
-    lightThemeActive = false;
-  } else {
-    themeChangeElements.forEach((elem) => {
-      elem.classList.add('light-theme');
-    });
-    lightThemeActive = true;
-  }
+  themeChangeElements.forEach((elem) => {
+    elem.classList.toggle('light-theme');
+  });
 });
 
 console.log(`Вёрстка соответствует макету. Ширина экрана 768px +48
