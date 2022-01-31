@@ -64,11 +64,17 @@ function preloadSummerImages() {
 // Page translation
 import i18Obj from './assets/translation/translate.js';
 const switchLng = document.querySelectorAll('.switch-lng-check');
+const switchBtns = document.querySelectorAll('.switch-lng-check');
 
 switchLng.forEach((elem) => {
-  elem.addEventListener('click', (event) =>
-    getTranslate(event.target.textContent)
-  );
+  elem.addEventListener('click', (event) => {
+    // Clean all btns and make current active
+    switchBtns.forEach((btn) => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    // Translate the page
+    getTranslate(event.target.textContent);
+  });
 });
 
 function getTranslate(lang) {
@@ -85,6 +91,25 @@ function getTranslate(lang) {
     }
   });
 }
+
+// Dark-light theme change
+const themeChangeElements = document.querySelectorAll('.theme-change');
+const themeSwitchBtn = document.querySelector('.switch-theme');
+let lightThemeActive = false;
+
+themeSwitchBtn.addEventListener('click', () => {
+  if (lightThemeActive) {
+    themeChangeElements.forEach((elem) => {
+      elem.classList.remove('light-theme');
+    });
+    lightThemeActive = false;
+  } else {
+    themeChangeElements.forEach((elem) => {
+      elem.classList.add('light-theme');
+    });
+    lightThemeActive = true;
+  }
+});
 
 console.log(`Вёрстка соответствует макету. Ширина экрана 768px +48
 Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки. 

@@ -25,7 +25,6 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--clr-primary);
 }
 
 body,
@@ -41,6 +40,11 @@ body {
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr;
   min-height: 100vh;
+  background-color: var(--clr-primary);
+}
+
+body.light-theme {
+  background-color: var(--clr-secondary);
 }
 
 .container {
@@ -97,11 +101,33 @@ body {
   text-align: center;
   font-size: 20px;
   font-weight: 700;
-  cursor: pointer;
 }
 
-.check-en {
+.switch-lng-check {
+  display: block;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.switch-lng-check:hover {
   color: var(--clr-contrast);
+}
+
+.switch-lng-check.active {
+  position: relative;
+}
+
+.switch-lng-check.active::after {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  content: "";
+  width: 105%;
+  border: 2px solid var(--clr-contrast);
+}
+
+.switch-theme {
+  margin-left: 30px;
 }
 
 .menu-btn {
@@ -120,6 +146,10 @@ body {
 
 .container-padding > .section {
   padding-top: 100px;
+}
+
+.section.light-theme {
+  color: var(--clr-primary);
 }
 
 .section-title {
@@ -143,6 +173,10 @@ body {
   border-top: 2px solid var(--clr-contrast);
 }
 
+.section-title.light-theme::before {
+  border-color: var(--clr-primary);
+}
+
 .section-title-text {
   padding: 15px 20px;
   font-family: var(--ff-secondary);
@@ -151,6 +185,11 @@ body {
   color: var(--clr-contrast);
   line-height: 80px;
   background-color: var(--clr-primary);
+}
+
+.section-title-text.light-theme {
+  color: var(--clr-primary);
+  background-color: var(--clr-secondary);
 }
 
 .section-hero {
@@ -228,8 +267,22 @@ body {
 }
 
 .portfolio-btn.active {
-  color: #000;
-  background-color: #bdae82;
+  color: var(--clr-primary);
+  background-color: var(--clr-contrast);
+}
+
+.portfolio-btn.light-theme {
+  color: var(--clr-primary);
+  background-color: var(--clr-secondary);
+}
+
+.portfolio-btn.light-theme:hover {
+  background-color: var(--clr-contrast);
+}
+
+.portfolio-btn.active.light-theme {
+  color: var(--clr-secondary);
+  background-color: var(--clr-contrast);
 }
 
 .portfolio-items {
@@ -374,6 +427,10 @@ body {
   height: 150px;
 }
 
+.container-footer.light-theme {
+  background-color: var(--clr-primary);
+}
+
 .container-footer-item {
   display: flex;
   align-items: center;
@@ -468,6 +525,18 @@ input:-webkit-autofill:active {
 }
 
 .header-icon:hover {
+  fill: var(--clr-contrast);
+  cursor: pointer;
+}
+
+.switch-theme-icon {
+  fill: var(--clr-secondary);
+  width: 45px;
+  height: 45px;
+  transition: 0.3s;
+}
+
+.switch-theme-icon:hover {
   fill: var(--clr-contrast);
   cursor: pointer;
 }
