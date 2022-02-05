@@ -1,6 +1,6 @@
 // Fetch data from local storage
-let lang = 'en';
-let theme = 'dark';
+let lang = localStorage.getItem('lang') || 'en';
+let theme = localStorage.getItem('theme') || 'dark';
 
 function getLocalStorage() {
   if (localStorage.getItem('lang') === 'ru') {
@@ -20,6 +20,12 @@ function getLocalStorage() {
   }
 }
 window.addEventListener('load', getLocalStorage);
+
+function setLocalStorage() {
+  localStorage.setItem('lang', lang);
+  localStorage.setItem('theme', theme);
+}
+window.addEventListener('beforeunload', setLocalStorage);
 
 // Adaptive hamburger menu
 const menuBtn = document.querySelector('.menu-btn');
@@ -140,13 +146,6 @@ function changeTheme() {
     });
   });
 }
-
-// Create local storage
-function setLocalStorage() {
-  localStorage.setItem('lang', lang);
-  localStorage.setItem('theme', theme);
-}
-window.addEventListener('beforeunload', setLocalStorage);
 
 console.log(`Смена изображений в секции portfolio +25
 Перевод страницы на два языка +25
