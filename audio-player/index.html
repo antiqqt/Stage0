@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <!-- Styles -->
@@ -25,13 +25,48 @@
     <div class="container-body">
       <main>
         <div class="container container-main">
-          <div class="player"></div>
+          <img
+            class="background"
+            src="/assets/img/lemonade.png"
+            alt="background"
+          />
+          <!-- Audio player body -->
+          <div class="audio-player">
+            <img
+              class="thumbnail"
+              src="/assets/img/lemonade.png"
+              alt="thumbnail"
+            />
+            <div class="control-panel">
+              <div class="controls">
+                <button class="play-button button-img"></button>
+
+                <div class="song-info">
+                  <span class="song-artist">Beyonce</span>
+                  <span class="song-title">Don't Hurt Yourself</span>
+                </div>
+
+                <div class="song-switch">
+                  <button class="song-next button-img"></button>
+                  <button class="song-prev button-img"></button>
+                </div>
+              </div>
+
+              <div class="progress-bar-wrapper">
+                <input
+                  class="progress-bar"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+                <div class="current-time">0:00</div>
+                <div class="total-time">3:53</div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
-
-
-
-
 
       <footer class="footer">
         <div class="container container-footer">
@@ -39,9 +74,12 @@
             <span class="footer-info-item">©</span>
             <span class="footer-info-item">2022</span>
             <span class="footer-info-item">
-              <a class="link footer-link" href="https://github.com/antiqqt">antiqqt</a>
+              <a class="link footer-link" href="https://github.com/antiqqt"
+                >antiqqt</a
+              >
             </span>
           </div>
+
           <div class="footer-rss container-footer-item">
             <span class="footer-rss-text">
               <a class="link footer-link" href="https://rs.school/js-stage0/">
