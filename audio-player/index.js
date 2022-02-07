@@ -1,5 +1,6 @@
 // Create audio-player
 const audio = new Audio('assets/audio/beyonce.mp3');
+audio.volume = 0.5;
 const playBtn = document.querySelector('.play-button');
 
 function playAudio() {
@@ -58,7 +59,7 @@ function playNext() {
   // Change thumbnails on page
   themeChange();
 
-  // Keep play button in right state even 
+  // Keep play button in right state even
   // when we swipe through songs
   if (!playBtn.classList.contains('pause')) {
     playToggle();
@@ -108,9 +109,28 @@ setInterval(() => {
   // Update the thumb
   progressBar.max = Math.floor(audio.duration);
   progressBar.value = Math.floor(audio.currentTime);
-}, 1000)
+}, 1000);
 
 progressBar.addEventListener('input', () => {
   // Make current time correspond to slider thumb position
   audio.currentTime = progressBar.value;
-})
+});
+
+// Volume button
+const volumeBtn = document.querySelector('.volume-button');
+
+volumeBtn.addEventListener('click', () => {
+  audio.muted = !audio.muted;
+  volumeBtn.classList.toggle('mute');
+});
+
+// Volume slider
+const volumeSlider = document.querySelector('.volume-slider');
+
+volumeSlider.addEventListener('click', (elem) => {
+  const sliderWidth = window.getComputedStyle(volumeSlider).width;
+  const newVolume = elem.offsetX / parseInt(sliderWidth);
+  audio.volume = newVolume;
+  document.querySelector('.volume-percentage').style.width =
+    newVolume * 100 + '%';
+});

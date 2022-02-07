@@ -117,7 +117,7 @@ body {
 .controls {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0 10px;
+  padding: 7.5px 0 7.5px;
   height: 100%;
 }
 
@@ -125,12 +125,12 @@ body {
   margin-top: 12px;
   width: 50px;
   height: 50px;
-  background-image: url("/assets/svg/play.png");
+  background-image: url('/assets/svg/play.png');
   background-size: cover;
 }
 
 .play-button.pause {
-  background-image: url("/assets/svg/pause.png");
+  background-image: url('/assets/svg/pause.png');
 }
 
 .song-info {
@@ -168,13 +168,13 @@ body {
 
 .song-next {
   height: 30px;
-  background-image: url("/assets/svg/forward.png");
+  background-image: url('/assets/svg/forward.png');
   background-size: cover;
 }
 
 .song-prev {
   height: 30px;
-  background-image: url("/assets/svg/backward.png");
+  background-image: url('/assets/svg/backward.png');
   background-size: cover;
 }
 
@@ -190,6 +190,7 @@ body {
   height: 5px;
   border-radius: 30px;
   background: #000000;
+  cursor: pointer;
 }
 
 .progress-bar:focus {
@@ -227,6 +228,60 @@ body {
   right: 30px;
   color: rgb(193, 255, 6);
   font-size: 1.3rem;
+}
+
+.volume-button {
+  position: absolute;
+  right: 3px;
+  bottom: -17.5px;
+  width: 25px;
+  height: 25px;
+  filter: invert(1) brightness(0.8);
+  background-image: url('assets/svg/volume_up.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.3s;
+}
+
+.volume-button:hover {
+  filter: invert(1) brightness(0.75);
+}
+
+.volume-button.mute {
+  background-image: url('assets/svg/volume_off.svg');
+}
+
+.volume-slider {
+  visibility: hidden;
+  opacity: 0;
+  /*    */
+  position: absolute;
+  right: 35px;
+  bottom: -9px;
+  width: 50px;
+  height: 6px;
+  background: black;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #000a;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.volume-slider:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+.volume-button:hover + .volume-slider {
+  visibility: visible;
+  opacity: 1;
+}
+
+.volume-percentage {
+  background: linear-gradient(45deg, rgb(213, 213, 213), rgb(193, 255, 6));
+  height: 100%;
+  width: 50%;
+  border-radius: 30px;
 }
 
 /* Footer */
