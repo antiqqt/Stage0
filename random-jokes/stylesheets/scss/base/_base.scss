@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+@use '../abstracts' as vars;
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+/* Make sure children take 
+full height of its partent */
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Clear defaukt html margins */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  text-decoration: none;
+}

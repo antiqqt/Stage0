@@ -1,0 +1,33 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+@use '../abstracts' as vars;
+
+
+.footer {
+  background-color: vars.$bg-primary-clr;
+}
+
+.container-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.footer-info {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-info-item {
+  display: block;
+  color: vars.$text-primary-clr;
+  font-size: 2rem;
+}
+
+.footer-link,
+.footer-link:visited {
+  font-size: 2rem;
+}

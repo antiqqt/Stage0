@@ -1,0 +1,15 @@
+{
+  "name": "random-jokes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile-sass": "sass stylesheets/scss:stylesheets/main --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.49.7"
+  }
+}

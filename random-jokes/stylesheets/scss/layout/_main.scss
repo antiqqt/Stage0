@@ -1,0 +1,30 @@
+@use '../abstracts' as vars;
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: vars.$bg-primary-clr;
+}
+
+.main {
+  height: 100%;
+  margin-bottom: 5%;
+  .container {
+    height: inherit;
+    padding-top: 10%;
+  }
+}
+
+.content-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 0 auto;
+  padding: 15px 15px;
+  max-width: min(80%, 900px);
+  min-height: 90%;
+  box-shadow: vars.$block-shadow;
+  border-radius: 10px;
+}
