@@ -1,8 +1,34 @@
+:root {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  /* Set to 10px to scale comfortably */
+  font-weight: 400;
+  line-height: 1.2;
+  color: #617d98;
+}
+
 /**
  * Set up a decent box model on the root element
  */
 html {
   box-sizing: border-box;
+}
+
+/* Make sure children take 
+full height of its partent */
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Clear defaukt html margins */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
 
 /**
@@ -21,17 +47,7 @@ html {
  * Basic styles for links
  */
 a {
-  color: #e50050;
   text-decoration: none;
-}
-
-/**
- * Clear inner floats
- */
-.clearfix::after {
-  clear: both;
-  content: "";
-  display: table;
 }
 
 /**
@@ -82,6 +98,143 @@ a {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.link,
+.link:visited {
+  color: #617d98;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.link:hover {
+  background: -webkit-linear-gradient(45deg, #a74d77, #c5b8be);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.button {
+  width: 15rem;
+  height: 4rem;
+  padding: 0.2em;
+  font-size: 2.1rem;
+  color: #617d98;
+  text-align: center;
+  background: -webkit-linear-gradient(45deg, #a74d77, #c5b8be);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-shadow: 0.3rem 0.3rem 0.6rem #9fadbd, -0.2rem -0.2rem 0.5rem #ffffff;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.button:hover {
+  background: inherit;
+  -webkit-text-fill-color: #617d98;
+}
+.button:active {
+  box-shadow: inset 0.2rem 0.2rem 0.5rem #9fadbd, inset -0.2rem -0.2rem 0.5rem #ffffff;
+}
+
+.quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .quote {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 500px) {
+  .quote {
+    font-size: 1.6rem;
+  }
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+}
+
+.social-share {
+  padding: 5px 8px;
+  box-shadow: 0.3rem 0.3rem 0.6rem #9fadbd, -0.2rem -0.2rem 0.5rem #ffffff;
+  border-radius: 5px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #d7eef8;
+}
+
+.main {
+  height: 100%;
+  margin-bottom: 5%;
+}
+.main .container {
+  height: inherit;
+  padding-top: 10%;
+}
+
+.content-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 0 auto;
+  padding: 15px 15px;
+  max-width: min(80%, 900px);
+  min-height: 90%;
+  box-shadow: 0.8rem 0.8rem 1.4rem #9fadbd, -0.2rem -0.2rem 1.8rem #ffffff;
+  border-radius: 10px;
+}
+
+.footer {
+  background-color: #d7eef8;
+}
+
+.container-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.footer-info {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-info-item {
+  display: block;
+  color: #617d98;
+  font-size: 2rem;
+}
+
+.footer-link,
+.footer-link:visited {
+  font-size: 2rem;
 }
 
 /*# sourceMappingURL=main.css.map */

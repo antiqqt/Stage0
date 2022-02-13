@@ -1,0 +1,77 @@
+@use '../abstracts' as vars;
+
+// Links
+.link,
+.link:visited {
+  color: vars.$text-primary-clr;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.link:hover {
+  background: -webkit-linear-gradient(45deg, #a74d77, #c5b8be);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Buttons
+.button {
+  width: 15rem;
+  height: 4rem;
+  padding: 0.2em;
+  font-size: 2.1rem;
+  color: vars.$text-primary-clr;
+  text-align: center;
+  background: -webkit-linear-gradient(45deg, #a74d77, #c5b8be);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-shadow: vars.$button-shadow-outer;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    background: inherit;
+    -webkit-text-fill-color: vars.$text-primary-clr;
+  }
+
+  &:active {
+    box-shadow: vars.$button-shadow-inner;
+  }
+}
+
+// Text blocks
+.quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 2.5rem;
+  font-weight: vars.$bold;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 1.6rem;
+  }
+}
+
+// Images
+.img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Social links
+.social-share {
+  padding: 5px 8px;
+  box-shadow: vars.$button-shadow-outer;
+  border-radius: 5px;
+}

@@ -1,4 +1,38 @@
-@use 'variables' as *;
-@forward 'variables';
-@forward 'functions';
-@forward 'mixins';
+// VARIABLES
+// Containers
+$max-width: 1920px;
+
+// Colors
+$text-primary-clr: #617d98;
+$text-secondary-clr: #e6f4f1;
+
+$bg-primary-clr: #d7eef8;
+$bg-secondary-clr: #49a6e9;
+
+$link-hover-clr: #e081ac;
+
+$shadow-white-clr: #ffffff;
+$shadow-grey-clr: #9fadbd;
+
+// Fonts
+$regular: 400;
+$bold: 600;
+
+// Shadows
+$block-shadow: 0.8rem 0.8rem 1.4rem $shadow-grey-clr,
+  -0.2rem -0.2rem 1.8rem $shadow-white-clr;
+
+$button-shadow-outer: .3rem .3rem .6rem $shadow-grey-clr, 
+-.2rem -.2rem .5rem $shadow-white-clr;
+
+$button-shadow-inner: inset 0.2rem 0.2rem 0.5rem $shadow-grey-clr,
+  inset -0.2rem -0.2rem 0.5rem $shadow-white-clr;
+
+// GLOBAL SETTINGS
+:root {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; /* Set to 10px to scale comfortably */
+  font-weight: $regular;
+  line-height: 1.2;
+  color: $text-primary-clr;
+}

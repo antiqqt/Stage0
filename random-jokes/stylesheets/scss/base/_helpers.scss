@@ -3,16 +3,6 @@
 // -----------------------------------------------------------------------------
 @use '../abstracts' as *;
 
-
-/**
- * Clear inner floats
- */
-.clearfix::after {
-  clear: both;
-  content: '';
-  display: table;
-}
-
 /**
  * Main content containers
  * 1. Make the container full-width with a maximum width
@@ -54,4 +44,13 @@
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
 }
