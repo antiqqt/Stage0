@@ -9,7 +9,6 @@ async function getData() {
   showData(data);
   // Change text to be shared
   changeSharedText(data);
-  console.log(data);
 }
 getData();
 
