@@ -14,7 +14,9 @@ async function getData() {
 getData();
 
 function showData(data) {
-  quote.textContent = data.value.joke;
+  // Remove &quote symbols
+  const joke = data.value.joke.replace(/&quot;/g, '"');
+  quote.textContent = joke;
 }
 
 function changeSharedText(data) {
