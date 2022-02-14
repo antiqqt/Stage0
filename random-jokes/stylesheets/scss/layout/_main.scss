@@ -8,10 +8,10 @@
 }
 
 .main {
-  height: 100%;
-  margin-bottom: 5%;
+  flex-grow: 1;
+  margin-bottom: 40px;
   .container {
-    height: inherit;
+    height: 100%;
     padding-top: 7.5%;
   }
 }
@@ -24,7 +24,7 @@
   margin: 0 auto;
   padding: 15px 15px;
   max-width: min(80%, 700px);
-  min-height: 95%;
+  min-height: 90%;
   box-shadow: vars.$block-shadow;
   border-radius: 10px;
   .quote {

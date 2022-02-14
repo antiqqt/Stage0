@@ -242,11 +242,11 @@ a {
 }
 
 .main {
-  height: 100%;
-  margin-bottom: 5%;
+  flex-grow: 1;
+  margin-bottom: 40px;
 }
 .main .container {
-  height: inherit;
+  height: 100%;
   padding-top: 7.5%;
 }
 
@@ -258,7 +258,7 @@ a {
   margin: 0 auto;
   padding: 15px 15px;
   max-width: min(80%, 700px);
-  min-height: 95%;
+  min-height: 90%;
   box-shadow: 0.8rem 0.8rem 1.4rem #9fadbd, -0.2rem -0.2rem 1.8rem #f3f7fd;
   border-radius: 10px;
 }
