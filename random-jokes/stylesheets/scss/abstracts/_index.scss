@@ -11,7 +11,7 @@ $bg-secondary-clr: #49a6e9;
 
 $link-hover-clr: #e081ac;
 
-$shadow-white-clr: #ffffff;
+$shadow-white-clr: #f3f7fd;
 $shadow-grey-clr: #9fadbd;
 
 // Fonts
@@ -23,7 +23,7 @@ $block-shadow: 0.8rem 0.8rem 1.4rem $shadow-grey-clr,
   -0.2rem -0.2rem 1.8rem $shadow-white-clr;
 
 $button-shadow-outer: .3rem .3rem .6rem $shadow-grey-clr, 
--.2rem -.2rem .5rem $shadow-white-clr;
+-.2rem -.2rem .4rem #eef2f8;
 
 $button-shadow-inner: inset 0.2rem 0.2rem 0.5rem $shadow-grey-clr,
   inset -0.2rem -0.2rem 0.5rem $shadow-white-clr;

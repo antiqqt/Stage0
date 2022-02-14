@@ -28,23 +28,35 @@
     <main class="main">
       <div class="container container-main">
         <div class="content-block">
-          <img class="img" src="assets/img/chuck.png" alt="chuck norris" />
+          <div class="img-wrapper">
+            <img
+              class="img"
+              src="assets/img/chuck-norris-1-removebg.png"
+              alt="chuck norris"
+            />
+          </div>
           <button class="button get-quote" type="button">Press me</button>
-          <p class="quote">
-          </p>
-          <div class="social-share">
-            <div
-              class="ya-share2 yandex-share"
-              data-curtain
-              data-lang="en"
-              data-color-scheme="blackwhite"
-              data-services="vkontakte,facebook,telegram,twitter,reddit"
-            ></div>
+          <p class="quote quote-en"></p>
+          <p class="quote quote-ru visually-hidden"></p>
+          <div class="functionality-container">
+            <div class="social-share">
+              <div
+                class="ya-share2 yandex-share"
+                data-curtain
+                data-lang="en"
+                data-color-scheme="blackwhite"
+                data-services="vkontakte,facebook,telegram,twitter,reddit"
+              ></div>
+            </div>
+
+            <div class="switch-lang">
+              <input class="switch-input" id="switch" type="checkbox" />
+              <label for="switch"></label>
+            </div>
           </div>
         </div>
       </div>
     </main>
-
     <!-- Footer -->
     <footer class="footer">
       <div class="container container-footer">
