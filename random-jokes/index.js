@@ -7,7 +7,6 @@ async function getData() {
   const res = await fetch(url);
   const data = await res.json();
   let currentJokeIndex;
-  let currentRuJokeIndex;
   // Change the joke
   showData(data);
   // Change text to be shared
@@ -66,6 +65,7 @@ async function getTranslatedQuotes() {
   const quotes = 'assets/jokes/chuck-jokes-ru.json';
   const res = await fetch(quotes);
   const data = await res.json();
+  let currentRuJokeIndex;
   showRuData(data);
   changeSharedText(data);
 }
@@ -78,7 +78,13 @@ function showRuData(data) {
   quoteRu.textContent = joke;
 }
 
-
+function changeSharedText(data) {
+  const socialShare = document.querySelector('.yandex-share');
+  socialShare.setAttribute(
+    'data-description',
+    data.value[currentRuJokeIndex].joke
+  );
+}
 
 // Starting script
 getData();
