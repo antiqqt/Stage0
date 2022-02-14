@@ -12,7 +12,7 @@
   margin-bottom: 5%;
   .container {
     height: inherit;
-    padding-top: 10%;
+    padding-top: 7.5%;
   }
 }
 
@@ -23,8 +23,26 @@
   gap: 40px;
   margin: 0 auto;
   padding: 15px 15px;
-  max-width: min(80%, 900px);
-  min-height: 90%;
+  max-width: min(80%, 700px);
+  min-height: 95%;
   box-shadow: vars.$block-shadow;
   border-radius: 10px;
+  .quote {
+    flex-grow: 3;
+  }
+}
+
+.img-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.functionality-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  width: 100%;
 }
