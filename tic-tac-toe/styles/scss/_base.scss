@@ -1,0 +1,131 @@
+// VARIABLES
+:root {
+  // Containers
+  --max-width: 1920px;
+  --board-size: 500px;
+
+  // Colors
+  --text-primary-clr: #2f8479;
+  --text-secondary-clr: #d1e7e3;
+  --text-accent-clr: #384955;
+
+  --bg-primary-clr: #d1e7e3;
+  --bg-secondary-clr: #40c08c;
+  --bg-hover-clr: #3ab382;
+
+  --cross-clr: #e081ac;
+  --cross-light-clr: #a88997;
+
+  --circle-clr: #eee8a9;
+  --circle-light-clr: rgba(238, 232, 169, 0.6);
+
+  --shadow-clr: #008a5a;
+
+  --link-hover-clr: #e081ac;
+
+  // Fonts
+  --regular: 400;
+  --bold: 600;
+}
+
+// GLOBAL SETTINGS
+:root {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; /* Set to 10px to scale comfortably */
+  font-weight: var(--regular);
+  line-height: 1.2;
+  color: var(--text-primary-clr);
+}
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+/* Make sure children take 
+full height of its partent */
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Clear defaukt html margins */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  text-decoration: none;
+}
+
+// HELPERS
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  max-width: var(--max-width); /* 1 */
+  margin-left: auto; /* 2 */
+  margin-right: auto; /* 2 */
+  padding-left: 20px; /* 3 */
+  padding-right: 20px; /* 3 */
+  width: 100%; /* 1 */
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}

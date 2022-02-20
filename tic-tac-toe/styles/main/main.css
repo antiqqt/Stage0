@@ -1,0 +1,317 @@
+:root {
+  --max-width: 1920px;
+  --board-size: 500px;
+  --text-primary-clr: #2f8479;
+  --text-secondary-clr: #d1e7e3;
+  --text-accent-clr: #384955;
+  --bg-primary-clr: #d1e7e3;
+  --bg-secondary-clr: #40c08c;
+  --bg-hover-clr: #3ab382;
+  --cross-clr: #e081ac;
+  --cross-light-clr: #a88997;
+  --circle-clr: #eee8a9;
+  --circle-light-clr: rgba(238, 232, 169, 0.6);
+  --shadow-clr: #008a5a;
+  --link-hover-clr: #e081ac;
+  --regular: 400;
+  --bold: 600;
+}
+
+:root {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  /* Set to 10px to scale comfortably */
+  font-weight: var(--regular);
+  line-height: 1.2;
+  color: var(--text-primary-clr);
+}
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+/* Make sure children take 
+full height of its partent */
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Clear defaukt html margins */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  text-decoration: none;
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  max-width: var(--max-width);
+  /* 1 */
+  margin-left: auto;
+  /* 2 */
+  margin-right: auto;
+  /* 2 */
+  padding-left: 20px;
+  /* 3 */
+  padding-right: 20px;
+  /* 3 */
+  width: 100%;
+  /* 1 */
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0;
+  /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary-clr);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  width: var(--board-size);
+  height: var(--board-size);
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: stretch;
+  align-items: stretch;
+  grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+  gap: 10px;
+  padding: 15px;
+  border: 2px solid var(--shadow-clr);
+  border-radius: 25px;
+  box-shadow: -10px 7px 0px -2px var(--shadow-clr);
+}
+.board .cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-secondary-clr);
+  border: 2px solid var(--shadow-clr);
+  border-radius: 5px;
+  box-shadow: -1.2px 2px 0px 0px var(--shadow-clr);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.board .cell:hover {
+  background-color: var(--bg-hover-clr);
+}
+.board .cell:active {
+  box-shadow: -1.2px 7.4px 0px -2.5px var(--shadow-clr);
+}
+.board .cell.cross, .board .cell.circle {
+  cursor: not-allowed;
+}
+
+.game-info {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--text-secondary-clr);
+  font-size: 8rem;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.footer {
+  background-color: var(--bg-primary-clr);
+}
+
+.container-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+}
+
+.footer-info {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-info-item {
+  display: block;
+  color: var(--text-primary-clr);
+  font-size: 2rem;
+}
+
+.footer-link,
+.footer-link:visited {
+  font-size: 2rem;
+}
+
+.footer-rss-link {
+  display: block;
+  width: 100px;
+  height: 40px;
+  background-image: url("../../assets/svg/rs_school_logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.link,
+.link:visited {
+  color: var(--text-primary-clr);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.link:hover {
+  color: var(--link-hover-clr);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  color: var(--text-secondary-clr);
+  background-color: var(--bg-secondary-clr);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.button:hover {
+  color: var(--text-accent-clr);
+}
+.button:active {
+  transform: scale(1.1);
+}
+
+/* Cross */
+.cell.cross::before,
+.cell.cross::after,
+.board.cross .cell:not(.cross):not(.circle):hover::before,
+.board.cross .cell:not(.cross):not(.circle):hover::after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  height: 90%;
+  background-color: var(--cross-clr);
+  border-radius: 15px;
+}
+
+.cell.cross::before,
+.board.cross .cell:not(.cross):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.cross::after,
+.board.cross .cell:not(.cross):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+.board.cross .cell:not(.cross):not(.circle):hover::before,
+.board.cross .cell:not(.cross):not(.circle):hover::after {
+  background-color: var(--cross-light-clr);
+}
+
+/* Circle */
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.cross):not(.circle):hover::before,
+.board.circle .cell:not(.cross):not(.circle):hover::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.circle::before,
+.board.circle .cell:not(.cross):not(.circle):hover::before {
+  width: 70%;
+  height: 70%;
+  background-color: var(--circle-clr);
+}
+
+.cell.circle::after,
+.board.circle .cell:not(.cross):not(.circle):hover::after {
+  width: 55%;
+  height: 55%;
+  background-color: var(--bg-secondary-clr);
+}
+
+.board.circle .cell:not(.cross):not(.circle):hover::before {
+  background-color: var(--circle-light-clr);
+}
+
+/*# sourceMappingURL=main.css.map */

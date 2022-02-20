@@ -1,0 +1,95 @@
+// Links
+.link,
+.link:visited {
+  color: var(--text-primary-clr);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.link:hover {
+  color: var(--link-hover-clr);
+}
+
+// Buttons 
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5em 1em;
+  border: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  color: var(--text-secondary-clr);
+  background-color: var(--bg-secondary-clr);
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    color: var(--text-accent-clr);
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
+}
+
+// Figures
+/* Cross */
+
+.cell.cross::before,
+.cell.cross::after,
+.board.cross .cell:not(.cross):not(.circle):hover::before,
+.board.cross .cell:not(.cross):not(.circle):hover::after {
+  content: '';
+  position: absolute;
+  width: 10%;
+  height: 90%;
+  background-color: var(--cross-clr);
+  border-radius: 15px;
+}
+
+.cell.cross::before,
+.board.cross .cell:not(.cross):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.cross::after,
+.board.cross .cell:not(.cross):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+.board.cross .cell:not(.cross):not(.circle):hover::before,
+.board.cross .cell:not(.cross):not(.circle):hover::after {
+  background-color: var(--cross-light-clr);
+}
+
+
+/* Circle */
+
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.cross):not(.circle):hover::before,
+.board.circle .cell:not(.cross):not(.circle):hover::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.circle::before,
+.board.circle .cell:not(.cross):not(.circle):hover::before {
+  width: 70%;
+  height: 70%;
+  background-color: var(--circle-clr);
+}
+
+.cell.circle::after,
+.board.circle .cell:not(.cross):not(.circle):hover::after {
+  width: 55%;
+  height: 55%;
+  background-color: var(--bg-secondary-clr);
+}
+
+.board.circle .cell:not(.cross):not(.circle):hover::before {
+  background-color: var(--circle-light-clr);
+}
