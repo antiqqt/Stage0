@@ -26,11 +26,14 @@
   // Fonts
   --regular: 400;
   --bold: 600;
+
+  --ff-main: 'Montserrat', sans-serif;
+  --ff-header: 'Slackey', cursive;
 }
 
 // GLOBAL SETTINGS
 :root {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var( --ff-main);
   font-size: 10px; /* Set to 10px to scale comfortably */
   font-weight: var(--regular);
   line-height: 1.2;

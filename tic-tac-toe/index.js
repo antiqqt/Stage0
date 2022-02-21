@@ -14,13 +14,43 @@ const WINNING_COMBINATIONS = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-
+const leaderboardResults = {
+  [`X's`]: 0,
+  [`O's`]: 0,
+  ['Draws']: 0,
+};
+// Game flow
 const cells = document.querySelectorAll('.cell');
 const board = document.querySelector('.board');
 let circleTurn = false;
 const winningMessage = document.querySelector('.winning-message');
 const gameInfo = document.querySelector('.game-info');
 const restartButton = document.querySelector('.restart-button');
+const turns = document.querySelector('.turns');
+let actionCount = 0;
+let gameResult;
+const gameResults = document.querySelector('.game-results');
+const closeBtn = document.querySelector('.close');
+const leaderboardBtn = document.querySelector('.leaderboard');
+
+// POSSIBLE IMPROVEMENT
+// Get local storage on load
+// Can't make it with window.addEventListener('load')
+// as it gets ovveriden with leaderboardResults declaration
+getLocalStorage();
+
+
+// Hide results
+closeBtn.addEventListener('click', hideResults);
+leaderboardBtn.addEventListener('click', showResults);
+
+function hideResults() {
+  gameResults.classList.add('visually-hidden');
+}
+
+function showResults() {
+  gameResults.classList.remove('visually-hidden');
+}
 
 // Restart the game
 restartButton.addEventListener('click', resetGame);
@@ -32,6 +62,8 @@ function resetGame() {
     cell.classList.remove(CIRCLE_CLASS);
     cell.removeEventListener('click', handleClick);
   });
+  // Reset actions
+  actionCount = 0;
   // Start anew
   startGame();
 }
@@ -46,6 +78,7 @@ function startGame() {
     cell.addEventListener('click', handleClick, { once: true });
   });
   setBoardClass();
+  updateLeaderboardInfo();
 }
 
 // Main handler
@@ -54,14 +87,18 @@ function handleClick(e) {
   const currentClass = circleTurn ? CIRCLE_CLASS : CROSS_CLASS;
   // Place mark on target cell
   placeMark(cell, currentClass);
+  // Play game sound;
+  playSound(gameSound);
+  // Update actions count
+  updateActionCount();
   // Check for win
   if (checkwin(currentClass)) {
     endGame(false);
-  } 
+  }
   // If there isn't a winner, check for draw
   else if (isDraw()) {
     endGame(true);
-  } 
+  }
   // If it's not a draw, change players and resume
   else {
     swapTurns();
@@ -92,7 +129,7 @@ function setBoardClass() {
 }
 
 function checkwin(currentClass) {
-  // If every element of any win combination 
+  // If every element of any win combination
   // belongs to current class, it's a win for current class
   return WINNING_COMBINATIONS.some((combination) => {
     return combination.every((index) => {
@@ -113,9 +150,124 @@ function isDraw() {
 
 function endGame(draw) {
   if (draw) {
+    gameResult = 'Draws';
     winningMessage.innerText = 'Draw!';
   } else {
-    winningMessage.innerText = `${circleTurn ? 'O' : 'X'}'s win!`;
+    gameResult = circleTurn ? `O's` : `X's`;
+    winningMessage.innerText = `${gameResult} win!`;
   }
+  // Update number of curent turns
+  updateTurnsInfo();
+  // Store winner in leaderboard
+  saveInLeaderboard();
+  // Update leaderboard information
+  updateLeaderboardInfo();
+  // Make overlay visible
   gameInfo.classList.remove('visually-hidden');
 }
+
+function updateActionCount() {
+  actionCount++;
+}
+
+function updateTurnsInfo() {
+  let turnsCount = Math.ceil(actionCount / 2);
+  turns.innerText = `Number of turns: ${turnsCount}`;
+}
+
+// MUSIC
+
+// Game sounds
+const gameSound = new Audio('assets/sounds/click_sound.mp3');
+gameSound.id = 'sound';
+gameSound.volume = 0.4;
+const gameSoundBtn = document.querySelector('.button-sound');
+const gameSoundIcon = document.querySelector('.icon-sound');
+
+gameSoundBtn.addEventListener('click', gameSoundHandleClick);
+
+function gameSoundHandleClick() {
+  MuteToggle(gameSound);
+  ChangeImage(gameSound, gameSoundIcon);
+}
+
+// Background music
+const musicSound = new Audio('assets/sounds/background_music.mp3');
+musicSound.autoplay = true;
+musicSound.muted = true;
+musicSound.id = 'music';
+musicSound.volume = 0.1;
+musicSound.loop = true;
+const musicSoundBtn = document.querySelector('.button-music');
+const musicSoundIcon = document.querySelector('.icon-music');
+
+musicSoundBtn.addEventListener('click', musicSoundHandleClick);
+
+function musicSoundHandleClick() {
+  MuteToggle(musicSound);
+  ChangeImage(musicSound, musicSoundIcon);
+}
+
+// Start music with any action of user
+document.body.addEventListener('click', playMusic, { once: true });
+
+function playMusic() {
+  musicSound.play();
+}
+
+// Sound control functions
+function MuteToggle(audioPlayer) {
+  audioPlayer.muted = !audioPlayer.muted;
+}
+
+function ChangeImage(audioPlayer, audioPlayerIcon) {
+  let newId = audioPlayer.id;
+  let newState = getNewState(audioPlayer);
+  audioPlayerIcon.href.baseVal = `assets/svg/sprite_game_menu.svg#${newId}_${newState}`;
+}
+
+function getNewState(audioPlayer) {
+  let newSrc;
+  if (audioPlayer.muted) {
+    newSrc = 'off';
+  } else {
+    newSrc = 'on';
+  }
+  return newSrc;
+}
+
+function playSound(audioPlayer) {
+  audioPlayer.play();
+}
+
+// Local storage
+function getLocalStorage() {
+  if (localStorage.getItem('results')) {
+    let storageResults = JSON.parse(localStorage.getItem('results'));
+    Object.assign(leaderboardResults, storageResults);
+  }
+}
+
+function setLocalStorage() {
+  localStorage.setItem('results', JSON.stringify(leaderboardResults));
+}
+
+function saveInLeaderboard() {
+  leaderboardResults[gameResult] += 1;
+}
+
+function updateLeaderboardInfo() {
+  const winsData = Array.from(document.querySelectorAll('.td-wins'));
+  for (let i = 0; i < winsData.length; i++) {
+    winsData[i].innerText = Object.values(leaderboardResults)[i];
+  }
+}
+
+function resetLeaderboard() {
+  Object.keys(leaderboardResults).forEach(
+    (key) => (leaderboardResults[key] = 0)
+  );
+}
+
+window.addEventListener('beforeunload', setLocalStorage);
+

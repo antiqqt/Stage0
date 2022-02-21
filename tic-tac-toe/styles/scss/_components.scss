@@ -11,7 +11,6 @@
 }
 
 // Buttons 
-
 .button {
   display: flex;
   justify-content: center;
@@ -34,9 +33,22 @@
   }
 }
 
+.button-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;;
+  width: 75px;
+  aspect-ratio: 1;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 100%;
+  transition: .3s;
+  cursor: pointer;
+}
+
 // Figures
 /* Cross */
-
 .cell.cross::before,
 .cell.cross::after,
 .board.cross .cell:not(.cross):not(.circle):hover::before,
@@ -66,7 +78,6 @@
 
 
 /* Circle */
-
 .cell.circle::before,
 .cell.circle::after,
 .board.circle .cell:not(.cross):not(.circle):hover::before,
@@ -92,4 +103,16 @@
 
 .board.circle .cell:not(.cross):not(.circle):hover::before {
   background-color: var(--circle-light-clr);
+}
+
+// Icons
+.icon {
+  width: 35px;
+  height: 35px;
+  fill: var(--text-primary-clr);
+  transition: .3s;
+
+  &:hover {
+    fill: var(--link-hover-clr);
+  }
 }
