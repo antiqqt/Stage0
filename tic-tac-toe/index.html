@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Slackey&display=swap"
       rel="stylesheet"
     />
     <!-- Styles -->
@@ -26,8 +26,13 @@
     <script src="index.js" defer></script>
   </head>
   <body class="body">
+    <!-- Header -->
+    <header class="header container">
+      <h1 class="header-text">Tic-tac-toe</h1>
+    </header>
     <!-- Main -->
     <main class="main container">
+      <!-- Game board -->
       <div class="board">
         <div class="cell"></div>
         <div class="cell"></div>
@@ -39,10 +44,30 @@
         <div class="cell"></div>
         <div class="cell"></div>
       </div>
+      <!-- Game menu -->
+      <div class="game-menu">
+        <button class="button-img button-music" title="Background music">
+          <svg class="icon">
+            <use class='icon-music' href="assets/svg/sprite_game_menu.svg#music_off"></use>
+          </svg>
+        </button>
+
+        <button class="button-img button-sound" title="Game sounds">
+          <svg class="icon">
+            <use class='icon-sound' href="assets/svg/sprite_game_menu.svg#sound_on"></use>
+          </svg>
+        </button>
+
+        <button class="button-img leaderboard" title="Leaderboard">
+          <svg class="icon">
+            <use class='icon-leaderboard' href="assets/svg/sprite_game_menu.svg#leaderboard"></use>
+          </svg>
+        </button>
+      </div>
+      <!-- Game info overlay -->
       <div class="game-info visually-hidden">
-        <div class="winning-message">
-          X wins!
-        </div>
+        <div class="winning-message">X wins!</div>
+        <div class="turns">Number of turns: </div>
         <button class="button restart-button">Restart</button>
       </div>
     </main>
@@ -61,7 +86,10 @@
 
         <div class="footer-rss container-footer-item">
           <span class="footer-rss-text">
-            <a class="link footer-link footer-rss-link" href="https://rs.school/js-stage0/">
+            <a
+              class="link footer-link footer-rss-link"
+              href="https://rs.school/js-stage0/"
+            >
             </a>
           </span>
         </div>

@@ -4,13 +4,37 @@
   background-color: var(--bg-primary-clr);
 }
 
-// Main
-
-.main {
-  flex: 1;
+// Header
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header-text {
+  padding: 0.25em;
+  font-family: var(--ff-header);
+  font-weight: var(--regular);
+  font-size: 4.5vw;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 7vw;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 9vw;
+  }
+}
+
+// Main
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .board {
@@ -24,6 +48,7 @@
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   gap: 10px;
   padding: 15px;
+  margin-bottom: 3%; // to display game settings properly
   border: 2px solid var(--shadow-clr);
   border-radius: 25px;
   box-shadow: -10px 7px 0px -2px var(--shadow-clr);
@@ -45,7 +70,7 @@
     }
 
     &:active {
-      box-shadow: -1.2px 7.4px 0px -2.5px var(--shadow-clr)
+      box-shadow: -1.2px 7.4px 0px -2.5px var(--shadow-clr);
     }
 
     &.cross,
@@ -53,6 +78,18 @@
       cursor: not-allowed;
     }
   }
+
+  @media (max-width: 600px) {
+    width: calc(var(--board-size) * 0.75);
+    height: calc(var(--board-size) * 0.75);
+  }
+}
+
+.game-menu {
+  display: flex;
+  justify-content: center;
+  gap: 17.5%;
+  min-width: 10%;
 }
 
 .game-info {
@@ -68,7 +105,15 @@
   gap: 20px;
   color: var(--text-secondary-clr);
   font-size: 8rem;
-  background-color: rgba(#000000, .9);
+  background-color: rgba(#000000, 0.9);
+
+  .winning-message {
+    font-size: 8rem;
+  }
+
+  .turns {
+    font-size: 3rem;
+  }
 }
 
 // Footer

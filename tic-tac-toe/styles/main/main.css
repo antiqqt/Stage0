@@ -15,10 +15,12 @@
   --link-hover-clr: #e081ac;
   --regular: 400;
   --bold: 600;
+  --ff-main: "Montserrat", sans-serif;
+  --ff-header: "Slackey", cursive;
 }
 
 :root {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--ff-main);
   font-size: 10px;
   /* Set to 10px to scale comfortably */
   font-weight: var(--regular);
@@ -130,11 +132,37 @@ a {
   background-color: var(--bg-primary-clr);
 }
 
-.main {
-  flex: 1;
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header-text {
+  padding: 0.25em;
+  font-family: var(--ff-header);
+  font-weight: var(--regular);
+  font-size: 4.5vw;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .header-text {
+    font-size: 7vw;
+  }
+}
+@media (max-width: 480px) {
+  .header-text {
+    font-size: 9vw;
+  }
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .board {
@@ -148,6 +176,7 @@ a {
   grid-template: repeat(3, 1fr)/repeat(3, 1fr);
   gap: 10px;
   padding: 15px;
+  margin-bottom: 3%;
   border: 2px solid var(--shadow-clr);
   border-radius: 25px;
   box-shadow: -10px 7px 0px -2px var(--shadow-clr);
@@ -173,6 +202,19 @@ a {
 .board .cell.cross, .board .cell.circle {
   cursor: not-allowed;
 }
+@media (max-width: 600px) {
+  .board {
+    width: calc(var(--board-size) * 0.75);
+    height: calc(var(--board-size) * 0.75);
+  }
+}
+
+.game-menu {
+  display: flex;
+  justify-content: center;
+  gap: 17.5%;
+  min-width: 10%;
+}
 
 .game-info {
   position: fixed;
@@ -188,6 +230,12 @@ a {
   color: var(--text-secondary-clr);
   font-size: 8rem;
   background-color: rgba(0, 0, 0, 0.9);
+}
+.game-info .winning-message {
+  font-size: 8rem;
+}
+.game-info .turns {
+  font-size: 3rem;
 }
 
 .footer {
@@ -258,6 +306,20 @@ a {
   transform: scale(1.1);
 }
 
+.button-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  aspect-ratio: 1;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 100%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
 /* Cross */
 .cell.cross::before,
 .cell.cross::after,
@@ -312,6 +374,16 @@ a {
 
 .board.circle .cell:not(.cross):not(.circle):hover::before {
   background-color: var(--circle-light-clr);
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+  fill: var(--text-primary-clr);
+  transition: 0.3s;
+}
+.icon:hover {
+  fill: var(--link-hover-clr);
 }
 
 /*# sourceMappingURL=main.css.map */
