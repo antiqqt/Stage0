@@ -14,6 +14,11 @@ const WINNING_COMBINATIONS = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+const leaderboardResults = {
+  [`X's`]: 0,
+  [`O's`]: 0,
+  ['Draws']: 0,
+};
 // Game flow
 const cells = document.querySelectorAll('.cell');
 const board = document.querySelector('.board');
@@ -23,6 +28,29 @@ const gameInfo = document.querySelector('.game-info');
 const restartButton = document.querySelector('.restart-button');
 const turns = document.querySelector('.turns');
 let actionCount = 0;
+let gameResult;
+const gameResults = document.querySelector('.game-results');
+const closeBtn = document.querySelector('.close');
+const leaderboardBtn = document.querySelector('.leaderboard');
+
+// POSSIBLE IMPROVEMENT
+// Get local storage on load
+// Can't make it with window.addEventListener('load')
+// as it gets ovveriden with leaderboardResults declaration
+getLocalStorage();
+
+
+// Hide results
+closeBtn.addEventListener('click', hideResults);
+leaderboardBtn.addEventListener('click', showResults);
+
+function hideResults() {
+  gameResults.classList.add('visually-hidden');
+}
+
+function showResults() {
+  gameResults.classList.remove('visually-hidden');
+}
 
 // Restart the game
 restartButton.addEventListener('click', resetGame);
@@ -50,6 +78,7 @@ function startGame() {
     cell.addEventListener('click', handleClick, { once: true });
   });
   setBoardClass();
+  updateLeaderboardInfo();
 }
 
 // Main handler
@@ -121,12 +150,18 @@ function isDraw() {
 
 function endGame(draw) {
   if (draw) {
+    gameResult = 'Draws';
     winningMessage.innerText = 'Draw!';
   } else {
-    winningMessage.innerText = `${circleTurn ? 'O' : 'X'}'s win!`;
+    gameResult = circleTurn ? `O's` : `X's`;
+    winningMessage.innerText = `${gameResult} win!`;
   }
   // Update number of curent turns
   updateTurnsInfo();
+  // Store winner in leaderboard
+  saveInLeaderboard();
+  // Update leaderboard information
+  updateLeaderboardInfo();
   // Make overlay visible
   gameInfo.classList.remove('visually-hidden');
 }
@@ -158,11 +193,11 @@ function gameSoundHandleClick() {
 
 // Background music
 const musicSound = new Audio('assets/sounds/background_music.mp3');
+musicSound.autoplay = true;
+musicSound.muted = true;
 musicSound.id = 'music';
 musicSound.volume = 0.1;
-musicSound.muted = true;
 musicSound.loop = true;
-musicSound.play();
 const musicSoundBtn = document.querySelector('.button-music');
 const musicSoundIcon = document.querySelector('.icon-music');
 
@@ -171,6 +206,13 @@ musicSoundBtn.addEventListener('click', musicSoundHandleClick);
 function musicSoundHandleClick() {
   MuteToggle(musicSound);
   ChangeImage(musicSound, musicSoundIcon);
+}
+
+// Start music with any action of user
+document.body.addEventListener('click', playMusic, { once: true });
+
+function playMusic() {
+  musicSound.play();
 }
 
 // Sound control functions
@@ -197,3 +239,35 @@ function getNewState(audioPlayer) {
 function playSound(audioPlayer) {
   audioPlayer.play();
 }
+
+// Local storage
+function getLocalStorage() {
+  if (localStorage.getItem('results')) {
+    let storageResults = JSON.parse(localStorage.getItem('results'));
+    Object.assign(leaderboardResults, storageResults);
+  }
+}
+
+function setLocalStorage() {
+  localStorage.setItem('results', JSON.stringify(leaderboardResults));
+}
+
+function saveInLeaderboard() {
+  leaderboardResults[gameResult] += 1;
+}
+
+function updateLeaderboardInfo() {
+  const winsData = Array.from(document.querySelectorAll('.td-wins'));
+  for (let i = 0; i < winsData.length; i++) {
+    winsData[i].innerText = Object.values(leaderboardResults)[i];
+  }
+}
+
+function resetLeaderboard() {
+  Object.keys(leaderboardResults).forEach(
+    (key) => (leaderboardResults[key] = 0)
+  );
+}
+
+window.addEventListener('beforeunload', setLocalStorage);
+

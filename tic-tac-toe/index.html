@@ -48,27 +48,67 @@
       <div class="game-menu">
         <button class="button-img button-music" title="Background music">
           <svg class="icon">
-            <use class='icon-music' href="assets/svg/sprite_game_menu.svg#music_off"></use>
+            <use
+              class="icon-music"
+              href="assets/svg/sprite_game_menu.svg#music_off"
+            ></use>
           </svg>
         </button>
 
         <button class="button-img button-sound" title="Game sounds">
           <svg class="icon">
-            <use class='icon-sound' href="assets/svg/sprite_game_menu.svg#sound_on"></use>
+            <use
+              class="icon-sound"
+              href="assets/svg/sprite_game_menu.svg#sound_on"
+            ></use>
           </svg>
         </button>
 
         <button class="button-img leaderboard" title="Leaderboard">
           <svg class="icon">
-            <use class='icon-leaderboard' href="assets/svg/sprite_game_menu.svg#leaderboard"></use>
+            <use
+              class="icon-leaderboard"
+              href="assets/svg/sprite_game_menu.svg#leaderboard"
+            ></use>
           </svg>
         </button>
       </div>
       <!-- Game info overlay -->
       <div class="game-info visually-hidden">
         <div class="winning-message">X wins!</div>
-        <div class="turns">Number of turns: </div>
+        <div class="turns">Number of turns:</div>
         <button class="button restart-button">Restart</button>
+      </div>
+      <!-- Recent game result -->
+      <div class="game-results visually-hidden">
+        <table class="results-info">
+          <thead>
+            <tr>
+              <th class="th sides" colspan="2">Side</th>
+              <th class="th">Wins</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tr">
+              <td class="td-number"></td>
+              <td class="td-side">X's</td>
+              <td class="td-wins">0</td>
+            </tr>
+
+            <tr class="tr">
+              <td class="td-number"></td>
+              <td class="td-side">O's</td>
+              <td class="td-wins">0</td>
+            </tr>
+
+            <tr class="tr">
+              <td class="td-number"></td>
+              <td class="td-side">Draw</td>
+              <td class="td-wins">0</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="button close">Close</button>
       </div>
     </main>
     <!-- Footer -->
