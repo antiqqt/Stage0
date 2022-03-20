@@ -1,5 +1,5 @@
 ## My projects from RS School stage#0
-These are some basic projects I made during RS School stage#0 course in 2022.
+These are some basic projects I made during [RS School](https://rollingscopes.com/) [stage#0](https://rs.school/js-stage0/) course in 2022.
 
 
 ### List of projects:
@@ -9,6 +9,6 @@ These are some basic projects I made during RS School stage#0 course in 2022.
 4. https://antiqqt.github.io/Stage0/tic-tac-toe/
 
 ### Tech:
-* HTML 
+* HTML
 * CSS (SCSS)
 * JS
